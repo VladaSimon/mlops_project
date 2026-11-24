@@ -1,0 +1,9 @@
+services:
+  train:
+    build: .
+    env_file: .env
+    volumes:
+      - artifacts:/artifacts
+
+volumes:
+  artifacts:
