@@ -5,5 +5,17 @@ services:
     volumes:
       - artifacts:/artifacts
 
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    volumes:
+      - artifacts:/artifacts:ro
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      train:
+        condition: service_completed_successfully
+
 volumes:
   artifacts:
